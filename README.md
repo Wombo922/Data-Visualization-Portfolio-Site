@@ -37,20 +37,27 @@ Mathematics Graduate | Computer Science Student
 ```
 data-viz-portfolio/
 ├── data/
-│   ├── raw/              # Original datasets
-│   └── processed/        # Cleaned data
+│   ├── raw/              # Original datasets from APIs
+│   └── processed/        # Cleaned and processed data
 ├── notebooks/
 │   ├── 1_stock_market_analysis.ipynb
 │   ├── 2_crypto_volatility_analysis.ipynb
 │   ├── 3_crypto_social_sentiment.ipynb
-│   └── 4_market_intelligence_analysis.ipynb
+│   ├── 4_market_intelligence_analysis.ipynb
+│   ├── create_interactive_visualizations.py
+│   └── create_advanced_visualizations.py
 ├── visualizations/
-│   ├── static/           # PNG/JPG images
-│   └── interactive/      # HTML files with interactive charts
+│   ├── static/           # PNG/JPG charts for portfolio
+│   └── interactive/      # Interactive Plotly HTML charts
 ├── site/
-│   ├── index.html
-│   ├── style.css
-│   └── projects/
+│   ├── index.html        # Main portfolio page
+│   ├── style.css         # Global styling
+│   ├── resume.html       # Interactive resume (print to PDF)
+│   ├── playground.html   # Data exploration playground
+│   └── assets/
+│       └── Anthony_Galindo_Resume.pdf
+├── .gitignore
+├── requirements.txt
 └── README.md
 ```
 
@@ -99,8 +106,22 @@ jupyter notebook
 3. Visualizations will be saved to `visualizations/static/`
 4. Processed data will be saved to `data/processed/`
 
+## Portfolio Features
+- **Interactive Search & Filtering** - Real-time project search and category filters
+- **Code Snippets** - Collapsible Python code examples with copy-to-clipboard
+- **Chart Lightbox** - Click any chart for fullscreen viewing
+- **Data Playground** - Interactive data exploration with Chart.js (switch datasets, chart types, and filters)
+- **Downloadable Resume** - PDF resume available for download
+- **Dark Mode** - Toggle between light and dark themes
+- **Responsive Design** - Mobile-friendly layout
+
 ## Live Portfolio Site
-[Coming soon - Will be deployed on GitHub Pages]
+🚀 **Coming Soon** - Will be deployed on GitHub Pages
+
+To view locally:
+1. Clone this repository
+2. Open `site/index.html` in your browser
+3. Or use a local server: `python -m http.server 8000` then visit `http://localhost:8000/site/`
 
 ## Skills Demonstrated
 - Data collection from APIs
@@ -131,4 +152,9 @@ jupyter notebook
 - **15+ APIs** utilized for data collection
 - **Professional Portfolio Site** with responsive design
 
-Last Updated: 2025-10-01
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+**Last Updated:** October 2025

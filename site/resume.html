@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony Galindo - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+            padding: 40px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .resume-header {
+            text-align: center;
+            border-bottom: 3px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .resume-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .resume-header .title {
+            font-size: 1.2em;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.95em;
+        }
+
+        .contact-info a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            color: #667eea;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            border-bottom: 2px solid #333;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .experience-item,
+        .education-item,
+        .project-item {
+            margin-bottom: 25px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .item-title {
+            font-size: 1.15em;
+            font-weight: bold;
+        }
+
+        .item-subtitle {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .item-date {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .item-description ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        .item-description li {
+            margin-bottom: 6px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .skill-category h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 5px 0;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .skill-category li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .download-pdf-btn {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-pdf-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.6);
+        }
+
+        @media print {
+            body {
+                padding: 20px;
+            }
+
+            .print-btn,
+            .download-pdf-btn {
+                display: none;
+            }
+
+            .resume-header {
+                border-bottom-color: #000;
+            }
+
+            .section-title {
+                border-bottom-color: #000;
+            }
+
+            a {
+                color: #000;
+                text-decoration: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .print-btn {
+                top: 10px;
+                right: 10px;
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">🖨️ Print to PDF</button>
+    <a href="assets/Anthony_Galindo_Resume.pdf" download class="download-pdf-btn">📥 Download PDF Resume</a>
+
+    <div class="resume-header">
+        <h1>ANTHONY GALINDO</h1>
+        <div class="title">Data Analyst | Mathematics Graduate | Computer Science Student</div>
+        <div class="contact-info">
+            <span>📧 <a href="mailto:anthonygalindo922@gmail.com">anthonygalindo922@gmail.com</a></span>
+            <span>💼 <a href="https://linkedin.com/in/anthony-galindo" target="_blank">LinkedIn</a></span>
+            <span>⚡ <a href="https://github.com/DirtyWombo" target="_blank">GitHub</a></span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Professional Summary</h2>
+        <p>
+            Mathematics graduate with a strong foundation in quantitative analysis and data visualization,
+            currently pursuing a Computer Science degree. Experienced in transforming complex financial and
+            market data into actionable insights through Python-based analysis and interactive visualizations.
+            Background in cryptocurrency markets and quantitative trading provides unique perspective on
+            data-driven decision making.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Education</h2>
+
+        <div class="education-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Bachelor of Science in Computer Science</div>
+                    <div class="item-subtitle">Currently Pursuing</div>
+                </div>
+                <div class="item-date">Expected 2026</div>
+            </div>
+        </div>
+
+        <div class="education-item">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">Bachelor of Science in Mathematics</div>
+                    <div class="item-subtitle">Completed</div>
+                </div>
+                <div class="item-date">2024</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Data Visualization Projects</h2>
+
+        <div class="project-item">
+            <div class="item-header">
+                <div class="item-title">Tech Stock Market Correlation Analysis</div>
+                <div class="item-date">2025</div>
+            </div>
+            <div class="item-description">
+                <ul>
+                    <li>Analyzed 2 years of FAANG stock data using Polygon.io API to identify correlation patterns and diversification opportunities</li>
+                    <li>Discovered MSFT & META show strongest correlation (0.62) while NVDA demonstrates most independence</li>
+                    <li>Created interactive Plotly visualizations and static matplotlib charts for comprehensive market insights</li>
+                    <li><strong>Technologies:</strong> Python, pandas, matplotlib, Plotly, Polygon.io API</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="item-header">
+                <div class="item-title">Cryptocurrency Volatility & Risk Analysis</div>
+                <div class="item-date">2025</div>
+            </div>
+            <div class="item-description">
+                <ul>
+                    <li>Conducted comprehensive risk-return analysis of major cryptocurrencies (BTC, ETH, SOL, MATIC) over 365 days</li>
+                    <li>Calculated 30-day rolling volatility, Sharpe ratios, and risk-adjusted returns to compare investment profiles</li>
+                    <li>Identified BTC as best risk-adjusted performer with 76.7% returns at 42.8% volatility vs ETH's 88.6% returns at 74.6% volatility</li>
+                    <li><strong>Technologies:</strong> Python, pandas, seaborn, CoinGecko API</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="item-header">
+                <div class="item-title">Crypto Social Sentiment Tracker</div>
+                <div class="item-date">2025</div>
+            </div>
+            <div class="item-description">
+                <ul>
+                    <li>Built social sentiment tracking system analyzing 100K+ social media mentions across top cryptocurrencies</li>
+                    <li>Integrated LunarCrush and CoinGecko APIs to aggregate sentiment scores and social volume metrics</li>
+                    <li>Discovered sentiment doesn't always correlate with price performance, providing key insight for traders</li>
+                    <li><strong>Technologies:</strong> Python, pandas, matplotlib, LunarCrush API, CoinGecko API</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="item-header">
+                <div class="item-title">DeFi Protocol Market Intelligence</div>
+                <div class="item-date">2025</div>
+            </div>
+            <div class="item-description">
+                <ul>
+                    <li>Tracked Total Value Locked (TVL) trends across 5 major DeFi protocols over 180 days using Messari API</li>
+                    <li>Analyzed market share dynamics revealing Lido's dominance at $15B TVL (45% of analyzed protocols)</li>
+                    <li>Identified Uniswap as fastest growing protocol with 11.2% monthly growth rate</li>
+                    <li><strong>Technologies:</strong> Python, pandas, matplotlib, seaborn, Messari API</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Programming & Analysis</h4>
+                <ul>
+                    <li>Python (pandas, NumPy, scikit-learn)</li>
+                    <li>SQL & Database Management</li>
+                    <li>Statistical Analysis & Modeling</li>
+                    <li>API Integration & Data Collection</li>
+                    <li>Jupyter Notebooks</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Data Visualization</h4>
+                <ul>
+                    <li>Matplotlib & Seaborn</li>
+                    <li>Plotly (Interactive Dashboards)</li>
+                    <li>Data Storytelling</li>
+                    <li>Dashboard Design</li>
+                    <li>Chart Design & Best Practices</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Domain Knowledge</h4>
+                <ul>
+                    <li>Financial Markets Analysis</li>
+                    <li>Cryptocurrency & DeFi</li>
+                    <li>Risk & Portfolio Management</li>
+                    <li>Quantitative Trading Strategies</li>
+                    <li>Time Series Analysis</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4>Tools & Platforms</h4>
+                <ul>
+                    <li>Git & GitHub</li>
+                    <li>HTML/CSS/JavaScript</li>
+                    <li>Linux/Unix Command Line</li>
+                    <li>Market Data APIs (Polygon, CoinGecko, Messari, LunarCrush)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Key Achievements</h2>
+        <ul>
+            <li>Built comprehensive data visualization portfolio with 27 visualizations across 4 complete projects</li>
+            <li>Integrated 15+ financial market APIs for real-time and historical data collection</li>
+            <li>Created 11 interactive Plotly dashboards with advanced filtering and drill-down capabilities</li>
+            <li>Analyzed 2+ years of market data covering stocks, cryptocurrencies, DeFi protocols, and social sentiment</li>
+            <li>Developed responsive portfolio website showcasing data storytelling and technical skills</li>
+        </ul>
+    </div>
+
+    <script>
+        // Auto-print functionality (optional)
+        // Uncomment to automatically trigger print dialog on load
+        // window.addEventListener('load', () => {
+        //     setTimeout(() => window.print(), 500);
+        // });
+    </script>
+</body>
+</html>
