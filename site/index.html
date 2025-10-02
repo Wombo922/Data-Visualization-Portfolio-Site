@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Dark Mode Toggle -->
+    <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
+
     <header>
         <h1>Anthony Galindo</h1>
         <p class="subtitle">Data Visualization & Financial Analysis</p>
@@ -253,5 +259,30 @@
         <p>Built with Python, pandas, matplotlib, and Plotly | Data visualization by Anthony Galindo</p>
         <p>&copy; 2025 Anthony Galindo. All rights reserved.</p>
     </footer>
+
+    <!-- Dark Mode Script -->
+    <script>
+        // Check for saved dark mode preference or default to light mode
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        // Load saved preference from localStorage
+        const savedMode = localStorage.getItem('darkMode');
+        if (savedMode === 'enabled') {
+            body.classList.add('dark-mode');
+        }
+
+        // Toggle dark mode
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            // Save preference to localStorage
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+    </script>
 </body>
 </html>

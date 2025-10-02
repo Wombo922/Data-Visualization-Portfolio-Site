@@ -14,6 +14,155 @@ body {
     line-height: 1.8;
     color: #333;
     background-color: #f8f9fa;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    font-size: 1.5em;
+}
+
+.dark-mode-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.dark-mode-toggle .moon-icon {
+    display: none;
+}
+
+.dark-mode .dark-mode-toggle .sun-icon {
+    display: none;
+}
+
+.dark-mode .dark-mode-toggle .moon-icon {
+    display: inline;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a2e;
+    color: #eaeaea;
+}
+
+body.dark-mode header {
+    background: linear-gradient(135deg, #4a5aa8 0%, #5a3e70 100%);
+}
+
+body.dark-mode section {
+    color: #eaeaea;
+}
+
+body.dark-mode #about p {
+    color: #bbb;
+}
+
+body.dark-mode .project {
+    background: #16213e;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .project h3 {
+    color: #eaeaea;
+}
+
+body.dark-mode .project-description {
+    color: #aaa;
+}
+
+body.dark-mode .insights {
+    background: linear-gradient(135deg, #1e2a3a 0%, #2a3f5f 100%);
+    border-left-color: #8a9fea;
+}
+
+body.dark-mode .insights h4 {
+    color: #8a9fea;
+}
+
+body.dark-mode .insights li {
+    color: #ccc;
+}
+
+body.dark-mode .insights li strong {
+    color: #eaeaea;
+}
+
+body.dark-mode details {
+    background: #16213e;
+    border-color: #2a3f5f;
+}
+
+body.dark-mode details:hover {
+    border-color: #8a9fea;
+}
+
+body.dark-mode summary {
+    color: #8a9fea;
+}
+
+body.dark-mode summary:hover {
+    color: #a8b9fa;
+}
+
+body.dark-mode details p {
+    color: #bbb;
+}
+
+body.dark-mode details p strong {
+    color: #eaeaea;
+}
+
+body.dark-mode #skills {
+    background: #16213e;
+}
+
+body.dark-mode .skill-category {
+    background: linear-gradient(135deg, #1e2a3a 0%, #2a3f5f 100%);
+}
+
+body.dark-mode .skill-category h3 {
+    color: #8a9fea;
+}
+
+body.dark-mode .skill-category li {
+    color: #bbb;
+}
+
+body.dark-mode .skill-category li:before {
+    color: #8a9fea;
+}
+
+body.dark-mode #contact {
+    background: #16213e;
+}
+
+body.dark-mode .contact-intro {
+    color: #bbb;
+}
+
+body.dark-mode .contact-links a {
+    color: #8a9fea;
+}
+
+body.dark-mode .contact-links a:hover {
+    color: #a8b9fa;
+}
+
+body.dark-mode footer {
+    background: #16213e;
+    border-top-color: #2a3f5f;
+    color: #888;
 }
 
 /* Header */
