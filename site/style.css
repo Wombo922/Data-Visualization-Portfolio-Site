@@ -50,6 +50,36 @@ body {
     display: inline;
 }
 
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
 /* Dark Mode Styles */
 body.dark-mode {
     background-color: #1a1a2e;
@@ -242,6 +272,57 @@ section h2 {
     color: #555;
 }
 
+/* Stats Counter */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+    padding: 40px 0;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ebf1 100%);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.stat-number {
+    font-size: 3.5em;
+    font-weight: 700;
+    color: #667eea;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 1.1em;
+    color: #666;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+body.dark-mode .stat-box {
+    background: linear-gradient(135deg, #1e2a3a 0%, #2a3f5f 100%);
+}
+
+body.dark-mode .stat-number {
+    color: #8a9fea;
+}
+
+body.dark-mode .stat-label {
+    color: #bbb;
+}
+
 /* Project Cards */
 .project {
     background: white;
@@ -284,7 +365,7 @@ section h2 {
     transform: scale(1.02);
 }
 
-/* Button */
+/* Buttons */
 .btn {
     display: inline-block;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -295,14 +376,46 @@ section h2 {
     transition: all 0.3s;
     font-weight: 600;
     font-size: 1.1em;
-    margin: 20px 0;
+    margin: 10px 5px;
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    border: none;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .btn:hover {
     background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #2E86AB 0%, #1e5f7a 100%);
+    box-shadow: 0 4px 15px rgba(46, 134, 171, 0.4);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #1e5f7a 0%, #2E86AB 100%);
+    box-shadow: 0 6px 20px rgba(46, 134, 171, 0.6);
+}
+
+.chart-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+    .chart-actions {
+        flex-direction: column;
+    }
+
+    .chart-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 /* Insights Box */
@@ -523,6 +636,67 @@ body.dark-mode .github-btn:hover {
 
 body.dark-mode .linkedin-btn:hover {
     box-shadow: 0 6px 20px rgba(0, 119, 181, 0.6);
+}
+
+/* Contact Form */
+.contact-form-container {
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.contact-form {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-note {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+}
+
+body.dark-mode .contact-form {
+    background: #1e2a3a;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+    background: #16213e;
+    border-color: #2a3f5f;
+    color: #eaeaea;
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: #8a9fea;
+}
+
+body.dark-mode .form-note {
+    color: #aaa;
 }
 
 /* Footer */

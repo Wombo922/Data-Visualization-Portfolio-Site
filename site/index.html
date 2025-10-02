@@ -26,6 +26,17 @@
     <meta property="twitter:image" content="https://dirtywombo.github.io/data-viz-portfolio/visualizations/static/stock_normalized_performance.png">
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google Analytics (Replace GA_MEASUREMENT_ID with your actual ID) -->
+    <!-- Uncomment when you have your Google Analytics ID
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    -->
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -35,6 +46,11 @@
     <button id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
         <span class="sun-icon">☀️</span>
         <span class="moon-icon">🌙</span>
+    </button>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        ↑
     </button>
 
     <header>
@@ -61,6 +77,26 @@
             allowing me to identify meaningful patterns and communicate complex insights to both technical and
             non-technical audiences.
         </p>
+
+        <!-- Project Stats Counter -->
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-number" data-target="4">0</div>
+                <div class="stat-label">Complete Projects</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" data-target="27">0</div>
+                <div class="stat-label">Visualizations</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" data-target="11">0</div>
+                <div class="stat-label">Interactive Charts</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" data-target="15">0</div>
+                <div class="stat-label">APIs Integrated</div>
+            </div>
+        </div>
     </section>
 
     <section id="projects">
@@ -78,10 +114,15 @@
             <img src="../visualizations/static/stock_normalized_performance.png"
                  alt="Tech Stock Normalized Performance">
 
-            <a href="../visualizations/interactive/stock_price_trends.html"
-               class="btn" target="_blank">
-                Explore Interactive Chart
-            </a>
+            <div class="chart-actions">
+                <a href="../visualizations/interactive/stock_price_trends.html"
+                   class="btn" target="_blank">
+                    📊 Explore Interactive Chart
+                </a>
+                <button class="btn btn-secondary" onclick="downloadChart('../visualizations/static/stock_normalized_performance.png', 'tech_stocks_analysis.png')">
+                    ⬇️ Download Chart
+                </button>
+            </div>
 
             <div class="insights">
                 <h4>Key Findings:</h4>
@@ -117,10 +158,15 @@
             <img src="../visualizations/static/crypto_risk_return.png"
                  alt="Crypto Risk vs Return Profile">
 
-            <a href="../visualizations/interactive/crypto_risk_return.html"
-               class="btn" target="_blank">
-                Explore Interactive Risk Map
-            </a>
+            <div class="chart-actions">
+                <a href="../visualizations/interactive/crypto_risk_return.html"
+                   class="btn" target="_blank">
+                    📊 Explore Interactive Risk Map
+                </a>
+                <button class="btn btn-secondary" onclick="downloadChart('../visualizations/static/crypto_risk_return.png', 'crypto_risk_return.png')">
+                    ⬇️ Download Chart
+                </button>
+            </div>
 
             <div class="insights">
                 <h4>Key Findings:</h4>
@@ -157,10 +203,15 @@
             <img src="../visualizations/static/avg_sentiment_by_coin.png"
                  alt="Average Social Sentiment by Cryptocurrency">
 
-            <a href="../visualizations/interactive/social_sentiment.html"
-               class="btn" target="_blank">
-                Explore Interactive Sentiment Tracker
-            </a>
+            <div class="chart-actions">
+                <a href="../visualizations/interactive/social_sentiment.html"
+                   class="btn" target="_blank">
+                    📊 Explore Interactive Sentiment Tracker
+                </a>
+                <button class="btn btn-secondary" onclick="downloadChart('../visualizations/static/avg_sentiment_by_coin.png', 'social_sentiment.png')">
+                    ⬇️ Download Chart
+                </button>
+            </div>
 
             <div class="insights">
                 <h4>Key Findings:</h4>
@@ -197,10 +248,15 @@
             <img src="../visualizations/static/defi_tvl_trends.png"
                  alt="DeFi Protocol TVL Trends">
 
-            <a href="../visualizations/interactive/defi_tvl_trends.html"
-               class="btn" target="_blank">
-                Explore Interactive TVL Dashboard
-            </a>
+            <div class="chart-actions">
+                <a href="../visualizations/interactive/defi_tvl_trends.html"
+                   class="btn" target="_blank">
+                    📊 Explore Interactive TVL Dashboard
+                </a>
+                <button class="btn btn-secondary" onclick="downloadChart('../visualizations/static/defi_tvl_trends.png', 'defi_tvl_trends.png')">
+                    ⬇️ Download Chart
+                </button>
+            </div>
 
             <div class="insights">
                 <h4>Key Findings:</h4>
@@ -270,6 +326,26 @@
         <p class="contact-intro">
             Interested in data visualization, financial analysis, or collaborative projects? Let's connect!
         </p>
+
+        <!-- Quick Contact Form -->
+        <div class="contact-form-container">
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn">
+                    📧 Send Message
+                </button>
+                <p class="form-note">Note: This form opens your default email client. Alternatively, you can email me directly at anthonygalindo922@gmail.com</p>
+            </form>
+        </div>
+
         <div class="contact-links">
             <p><strong>Email:</strong> <a href="mailto:anthonygalindo922@gmail.com">anthonygalindo922@gmail.com</a></p>
             <p class="social-links">
@@ -351,6 +427,99 @@
                     });
                 }
             });
+        });
+
+        // Stats Counter Animation
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            };
+
+            updateCounter();
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.stat-number').forEach(stat => {
+                        animateCounter(stat);
+                    });
+                    statsObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsContainer = document.querySelector('.stats-container');
+        if (statsContainer) {
+            statsObserver.observe(statsContainer);
+        }
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Download Chart Function
+        function downloadChart(imageUrl, filename) {
+            fetch(imageUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                })
+                .catch(error => console.error('Download failed:', error));
+        }
+
+        // Contact Form Handler
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Create mailto link
+            const subject = `Portfolio Contact from ${name}`;
+            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            const mailtoLink = `mailto:anthonygalindo922@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+            // Open mailto link
+            window.location.href = mailtoLink;
+
+            // Optional: Clear form
+            this.reset();
         });
     </script>
 </body>
