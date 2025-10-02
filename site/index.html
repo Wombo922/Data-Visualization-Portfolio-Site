@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony Galindo - Data Visualization Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Anthony Galindo</h1>
+        <p class="subtitle">Data Visualization & Financial Analysis</p>
+        <p class="tagline">Transforming complex market data into clear, actionable insights</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Mathematics graduate with a passion for uncovering stories hidden in financial and market data.
+            Currently pursuing a Computer Science degree while building data visualization projects that combine
+            analytical rigor with clear visual storytelling.
+        </p>
+        <p>
+            My background in quantitative trading and crypto markets gives me a unique perspective on data analysis,
+            allowing me to identify meaningful patterns and communicate complex insights to both technical and
+            non-technical audiences.
+        </p>
+    </section>
+
+    <section id="projects">
+        <h2>Data Visualization Projects</h2>
+
+        <!-- Project 1: Tech Stocks -->
+        <div class="project">
+            <h3>Tech Stock Correlation Analysis</h3>
+            <p class="project-description">
+                Analyzed 2 years of FAANG stock performance to uncover correlation patterns and identify
+                which tech giants move together. This analysis reveals surprising independence in some stocks
+                while others show strong synchronized movements.
+            </p>
+
+            <img src="../visualizations/static/stock_normalized_performance.png"
+                 alt="Tech Stock Normalized Performance">
+
+            <a href="../visualizations/interactive/stock_price_trends.html"
+               class="btn" target="_blank">
+                Explore Interactive Chart
+            </a>
+
+            <div class="insights">
+                <h4>Key Findings:</h4>
+                <ul>
+                    <li><strong>MSFT & META show strongest correlation (0.62)</strong> - These stocks move together more than any other pair</li>
+                    <li><strong>NVDA most independent</strong> - Lower correlations suggest unique market drivers</li>
+                    <li><strong>All stocks positively correlated (0.37-0.62)</strong> - Tech sector moves as a cohesive unit</li>
+                    <li><strong>Diversification insights:</strong> Holding multiple FAANG stocks provides less risk reduction than expected</li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Methodology & Data Sources</summary>
+                <p>
+                    <strong>Data Source:</strong> Polygon.io API (2-year historical data)<br>
+                    <strong>Time Period:</strong> Last 730 days<br>
+                    <strong>Stocks Analyzed:</strong> AAPL, MSFT, GOOGL, META, NVDA<br>
+                    <strong>Analysis:</strong> Calculated daily returns and Pearson correlation coefficients to measure co-movement patterns<br>
+                    <strong>Tools:</strong> Python, pandas, matplotlib, Polygon.io API
+                </p>
+            </details>
+        </div>
+
+        <!-- Project 2: Crypto Volatility -->
+        <div class="project">
+            <h3>Cryptocurrency Volatility & Risk Analysis</h3>
+            <p class="project-description">
+                Comprehensive risk-return analysis of major cryptocurrencies over 365 days. This project quantifies
+                the volatility differences between established coins like Bitcoin and newer altcoins, helping
+                investors understand the true risk-reward tradeoffs.
+            </p>
+
+            <img src="../visualizations/static/crypto_risk_return.png"
+                 alt="Crypto Risk vs Return Profile">
+
+            <a href="../visualizations/interactive/crypto_risk_return.html"
+               class="btn" target="_blank">
+                Explore Interactive Risk Map
+            </a>
+
+            <div class="insights">
+                <h4>Key Findings:</h4>
+                <ul>
+                    <li><strong>ETH delivered 88.6% annualized returns</strong> - Highest performer despite high volatility (74.6%)</li>
+                    <li><strong>SOL shows 81.6% returns with 83.9% volatility</strong> - High risk, high reward profile</li>
+                    <li><strong>BTC offers 76.7% returns at "only" 42.8% volatility</strong> - Best risk-adjusted performance</li>
+                    <li><strong>MATIC underperformed with -8.0% returns</strong> - Demonstrates crypto downside risk</li>
+                    <li><strong>Higher volatility doesn't guarantee higher returns</strong> - Risk management crucial</li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Methodology & Data Sources</summary>
+                <p>
+                    <strong>Data Source:</strong> CoinGecko API<br>
+                    <strong>Time Period:</strong> 365 days<br>
+                    <strong>Cryptocurrencies:</strong> BTC, ETH, SOL, MATIC<br>
+                    <strong>Metrics Calculated:</strong> 30-day rolling volatility, annualized returns, Sharpe ratios, risk-return profiles<br>
+                    <strong>Tools:</strong> Python, pandas, matplotlib, seaborn, CoinGecko API
+                </p>
+            </details>
+        </div>
+
+        <!-- Project 3: Social Sentiment -->
+        <div class="project">
+            <h3>Crypto Social Sentiment Tracker</h3>
+            <p class="project-description">
+                Analyzed social media buzz and sentiment scores for cryptocurrencies to identify which coins are
+                generating the most discussion and positive/negative sentiment. Leverages my experience with
+                social velocity trading strategies.
+            </p>
+
+            <img src="../visualizations/static/avg_sentiment_by_coin.png"
+                 alt="Average Social Sentiment by Cryptocurrency">
+
+            <a href="../visualizations/interactive/social_sentiment.html"
+               class="btn" target="_blank">
+                Explore Interactive Sentiment Tracker
+            </a>
+
+            <div class="insights">
+                <h4>Key Findings:</h4>
+                <ul>
+                    <li><strong>SOL leads with 73.0 sentiment score</strong> - Most positive community sentiment</li>
+                    <li><strong>ETH at 66.8 shows strong institutional backing</strong> - Consistent positive sentiment</li>
+                    <li><strong>DOGE maintains 60.7 despite volatility</strong> - Meme coin resilience in sentiment</li>
+                    <li><strong>DOGE has highest social volume</strong> - 119K average mentions (retail-driven)</li>
+                    <li><strong>Sentiment doesn't always equal price performance</strong> - Important disconnect for traders</li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Methodology & Data Sources</summary>
+                <p>
+                    <strong>Data Sources:</strong> LunarCrush API, CoinGecko Trending API<br>
+                    <strong>Time Period:</strong> Last 30 days<br>
+                    <strong>Cryptocurrencies:</strong> BTC, ETH, SOL, DOGE, SHIB<br>
+                    <strong>Metrics:</strong> Sentiment scores (0-100), social volume, social dominance, trending rankings<br>
+                    <strong>Tools:</strong> Python, pandas, matplotlib, LunarCrush API
+                </p>
+            </details>
+        </div>
+
+        <!-- Project 4: DeFi TVL -->
+        <div class="project">
+            <h3>DeFi Protocol Market Intelligence</h3>
+            <p class="project-description">
+                Tracked Total Value Locked (TVL) trends across major DeFi protocols over 6 months to understand
+                market share dynamics and protocol growth rates. Reveals which protocols are gaining traction
+                and which are losing ground in the competitive DeFi landscape.
+            </p>
+
+            <img src="../visualizations/static/defi_tvl_trends.png"
+                 alt="DeFi Protocol TVL Trends">
+
+            <a href="../visualizations/interactive/defi_tvl_trends.html"
+               class="btn" target="_blank">
+                Explore Interactive TVL Dashboard
+            </a>
+
+            <div class="insights">
+                <h4>Key Findings:</h4>
+                <ul>
+                    <li><strong>Lido dominates with ~$15B TVL</strong> - Liquid staking commands largest market share</li>
+                    <li><strong>Uniswap grew 11.2% in 30 days</strong> - Fastest growing among majors</li>
+                    <li><strong>Aave holds steady at $6B</strong> - Lending protocol stability despite competition</li>
+                    <li><strong>Curve declined -0.1%</strong> - Only protocol showing negative growth</li>
+                    <li><strong>Market concentration risk:</strong> Top protocol holds 45% of analyzed TVL</li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Methodology & Data Sources</summary>
+                <p>
+                    <strong>Data Source:</strong> Messari API<br>
+                    <strong>Time Period:</strong> 180 days<br>
+                    <strong>Protocols Analyzed:</strong> Uniswap, Aave, Compound, Curve, Lido<br>
+                    <strong>Metrics:</strong> Total Value Locked (TVL), 30-day growth rates, market share, correlation analysis<br>
+                    <strong>Tools:</strong> Python, pandas, matplotlib, seaborn, Messari API
+                </p>
+            </details>
+        </div>
+
+    </section>
+
+    <section id="skills">
+        <h2>Skills & Technologies</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Programming</h3>
+                <ul>
+                    <li>Python (pandas, NumPy)</li>
+                    <li>Data Analysis & Statistics</li>
+                    <li>API Integration</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Visualization</h3>
+                <ul>
+                    <li>Matplotlib & Seaborn</li>
+                    <li>Plotly (Interactive Charts)</li>
+                    <li>Data Storytelling</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Domain Knowledge</h3>
+                <ul>
+                    <li>Financial Markets</li>
+                    <li>Cryptocurrency & DeFi</li>
+                    <li>Risk & Portfolio Analysis</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Tools & Platforms</h3>
+                <ul>
+                    <li>Jupyter Notebooks</li>
+                    <li>Git & GitHub</li>
+                    <li>Market Data APIs</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <p class="contact-intro">
+            Interested in data visualization, financial analysis, or collaborative projects? Let's connect!
+        </p>
+        <div class="contact-links">
+            <p><strong>Email:</strong> <a href="mailto:anthonygalindo922@gmail.com">anthonygalindo922@gmail.com</a></p>
+            <p>
+                <a href="https://github.com/DirtyWombo" target="_blank">GitHub</a> |
+                <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Built with Python, pandas, matplotlib, and Plotly | Data visualization by Anthony Galindo</p>
+        <p>&copy; 2025 Anthony Galindo. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,422 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.8;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 80px 20px 60px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    font-size: 1.5em;
+    opacity: 0.95;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.tagline {
+    font-size: 1.1em;
+    opacity: 0.85;
+    margin-bottom: 30px;
+    font-style: italic;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(255,255,255,0.3);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: opacity 0.3s, transform 0.2s;
+    display: inline-block;
+}
+
+nav a:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+/* Sections */
+section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+section h2 {
+    font-size: 2.8em;
+    margin-bottom: 30px;
+    color: #667eea;
+    border-bottom: 4px solid #667eea;
+    padding-bottom: 15px;
+    font-weight: 700;
+}
+
+#about p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    line-height: 1.9;
+    color: #555;
+}
+
+/* Project Cards */
+.project {
+    background: white;
+    padding: 50px;
+    margin-bottom: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.project h3 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 700;
+}
+
+.project-description {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #666;
+    line-height: 1.8;
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 30px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.project img:hover {
+    transform: scale(1.02);
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s;
+    font-weight: 600;
+    font-size: 1.1em;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+/* Insights Box */
+.insights {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ebf1 100%);
+    padding: 30px;
+    margin: 30px 0;
+    border-left: 6px solid #667eea;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.insights h4 {
+    margin-bottom: 15px;
+    color: #667eea;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.insights ul {
+    list-style-position: inside;
+    margin-left: 10px;
+}
+
+.insights li {
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    color: #444;
+    line-height: 1.7;
+}
+
+.insights li strong {
+    color: #333;
+    font-weight: 700;
+}
+
+/* Methodology Collapsible */
+details {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 2px solid #e8ebf1;
+    transition: all 0.3s;
+}
+
+details:hover {
+    border-color: #667eea;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: #667eea;
+    font-size: 1.2em;
+    padding: 10px;
+    transition: color 0.2s;
+}
+
+summary:hover {
+    color: #764ba2;
+}
+
+details p {
+    margin-top: 15px;
+    line-height: 1.8;
+    color: #555;
+    font-size: 1.05em;
+}
+
+details p strong {
+    color: #333;
+}
+
+/* Skills Section */
+#skills {
+    background: white;
+    padding: 50px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.skill-category {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ebf1 100%);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+}
+
+.skill-category h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.skill-category ul {
+    list-style: none;
+}
+
+.skill-category li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.skill-category li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+}
+
+/* Contact Section */
+#contact {
+    text-align: center;
+    background: white;
+    padding: 50px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.contact-intro {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.contact-links {
+    font-size: 1.2em;
+}
+
+.contact-links p {
+    margin: 15px 0;
+}
+
+.contact-links a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.contact-links a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    border-top: 1px solid #ddd;
+    margin-top: 60px;
+    background: white;
+}
+
+footer p {
+    margin: 10px 0;
+    font-size: 1em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    .subtitle {
+        font-size: 1.2em;
+    }
+
+    .tagline {
+        font-size: 1em;
+    }
+
+    nav a {
+        display: block;
+        margin: 15px 0;
+    }
+
+    section h2 {
+        font-size: 2.2em;
+    }
+
+    .project {
+        padding: 30px 20px;
+    }
+
+    .project h3 {
+        font-size: 1.8em;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 50px 15px 40px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .project {
+        padding: 20px 15px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}
+
+/* Smooth Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project,
+.skill-category {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Print Styles */
+@media print {
+    header {
+        background: #667eea;
+        color: white;
+    }
+
+    .btn,
+    nav {
+        display: none;
+    }
+
+    .project {
+        page-break-inside: avoid;
+    }
+}

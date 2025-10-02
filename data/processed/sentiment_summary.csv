@@ -1,0 +1,8 @@
+,sentiment_score,sentiment_score,social_volume,social_volume,social_dominance
+,mean,std,mean,max,mean
+coin,,,,,
+BTC,62.58,8.89,106578.72,178017.78,8.42
+DOGE,60.65,8.83,119077.9,212510.79,8.1
+ETH,66.82,8.53,85529.44,139351.39,8.92
+SHIB,55.57,9.59,95386.32,147375.0,9.47
+SOL,73.03,11.26,47772.93,83154.68,6.96
