@@ -84,7 +84,7 @@ data-viz-portfolio/
 ### Installation
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/data-viz-portfolio.git
+git clone https://github.com/DirtyWombo/data-viz-portfolio.git
 cd data-viz-portfolio
 ```
 
@@ -93,12 +93,22 @@ cd data-viz-portfolio
 pip install -r requirements.txt
 ```
 
-3. Launch Jupyter Notebook:
+3. **Set up API Keys** (Required for data collection):
+   - Get free API keys from:
+     - [Polygon.io](https://polygon.io/) - Stock market data
+     - [CoinGecko](https://www.coingecko.com/) - Cryptocurrency data
+     - [LunarCrush](https://lunarcrush.com/) - Social sentiment (optional)
+     - [Messari](https://messari.io/) - DeFi data (optional)
+   - Replace placeholders in notebooks:
+     - `YOUR_POLYGON_API_KEY` in `1_stock_market_analysis.ipynb`
+     - `YOUR_API_KEY` in other notebooks
+
+4. Launch Jupyter Notebook:
 ```bash
 jupyter notebook
 ```
 
-4. Open any notebook in the `notebooks/` folder to run the analysis
+5. Open any notebook in the `notebooks/` folder to run the analysis
 
 ## Running the Analysis
 1. Open the desired notebook (e.g., `1_stock_market_analysis.ipynb`)
