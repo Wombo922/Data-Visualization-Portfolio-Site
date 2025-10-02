@@ -466,6 +466,65 @@ details p strong {
     text-decoration: underline;
 }
 
+.social-links {
+    margin-top: 25px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.social-btn .icon {
+    font-size: 1.3em;
+}
+
+.github-btn {
+    background: linear-gradient(135deg, #24292e 0%, #1a1e22 100%);
+    color: white;
+}
+
+.github-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(36, 41, 46, 0.4);
+    text-decoration: none;
+}
+
+.linkedin-btn {
+    background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+    color: white;
+}
+
+.linkedin-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 119, 181, 0.4);
+    text-decoration: none;
+}
+
+body.dark-mode .social-btn {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .github-btn:hover {
+    box-shadow: 0 6px 20px rgba(255,255,255,0.2);
+}
+
+body.dark-mode .linkedin-btn:hover {
+    box-shadow: 0 6px 20px rgba(0, 119, 181, 0.6);
+}
+
 /* Footer */
 footer {
     text-align: center;
@@ -536,7 +595,7 @@ footer p {
     }
 }
 
-/* Smooth Animations */
+/* Smooth Scroll Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -548,9 +607,93 @@ footer p {
     }
 }
 
-.project,
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scroll reveal animations */
+.scroll-reveal {
+    opacity: 0;
+    transition: all 0.6s ease-out;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+}
+
+.project {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .skill-category {
-    animation: fadeIn 0.6s ease-out;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.6s ease-out;
+}
+
+.skill-category.revealed {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Staggered animation delays */
+.project:nth-child(1) { transition-delay: 0.1s; }
+.project:nth-child(2) { transition-delay: 0.2s; }
+.project:nth-child(3) { transition-delay: 0.3s; }
+.project:nth-child(4) { transition-delay: 0.4s; }
+
+.skill-category:nth-child(1) { transition-delay: 0.1s; }
+.skill-category:nth-child(2) { transition-delay: 0.2s; }
+.skill-category:nth-child(3) { transition-delay: 0.3s; }
+.skill-category:nth-child(4) { transition-delay: 0.4s; }
+
+/* Scroll progress bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 2px 4px rgba(102, 126, 234, 0.4);
 }
 
 /* Print Styles */
