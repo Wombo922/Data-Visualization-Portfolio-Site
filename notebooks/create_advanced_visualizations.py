@@ -7,7 +7,6 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
-import numpy as np
 
 print("Creating advanced interactive visualizations...\n")
 

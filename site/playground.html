@@ -257,12 +257,26 @@
         function loadDataset(datasetName) {
             const filePath = datasets[datasetName];
 
+            // Show loading state
+            document.querySelector('.chart-container').innerHTML =
+                '<div class="loading">Loading data...</div>';
+
             Papa.parse(filePath, {
                 download: true,
                 header: true,
                 dynamicTyping: true,
                 complete: function(results) {
+                    if (!results.data || results.data.length === 0) {
+                        document.querySelector('.chart-container').innerHTML =
+                            '<div class="error">No data found. The CSV file may be empty or in an incorrect format.</div>';
+                        return;
+                    }
                     currentData = results.data.filter(row => Object.values(row).some(val => val !== null && val !== ''));
+                    if (currentData.length === 0) {
+                        document.querySelector('.chart-container').innerHTML =
+                            '<div class="error">No valid data found after filtering.</div>';
+                        return;
+                    }
                     updateTickerOptions(datasetName);
                     updateChart();
                     updateStats(datasetName);
@@ -270,7 +284,15 @@
                 error: function(error) {
                     console.error('Error loading data:', error);
                     document.querySelector('.chart-container').innerHTML =
-                        '<div class="error">Error loading data. Please check the file path.</div>';
+                        `<div class="error">
+                            <strong>Error loading data file: ${filePath}</strong><br><br>
+                            This may happen when running the site locally due to browser CORS restrictions.<br><br>
+                            <strong>Solutions:</strong><br>
+                            1. Make sure you're running a local server (python -m http.server 8000)<br>
+                            2. Access the site via http://localhost:8000/site/playground.html (not via file://)<br>
+                            3. Check that the data files exist in the ../data/processed/ directory<br><br>
+                            <strong>Technical details:</strong> ${error.message || 'Unknown error'}
+                        </div>`;
                 }
             });
         }
@@ -350,8 +372,8 @@
                     </div>
                 `;
             } else if (datasetName === 'crypto-risk') {
-                const avgReturn = currentData.reduce((sum, row) => sum + (row.total_return || 0), 0) / currentData.length;
-                const avgVolatility = currentData.reduce((sum, row) => sum + (row.volatility || 0), 0) / currentData.length;
+                const avgReturn = currentData.reduce((sum, row) => sum + (row.annualized_return || 0), 0) / currentData.length;
+                const avgVolatility = currentData.reduce((sum, row) => sum + (row.avg_volatility || 0), 0) / currentData.length;
 
                 statsHTML = `
                     <div class="stat-card">
@@ -425,6 +447,25 @@
                 filteredData = currentData.filter(row => selectedTickers.includes(row[tickerField]));
             }
 
+            // Validate filtered data
+            if (!filteredData || filteredData.length === 0) {
+                if (currentChart) {
+                    currentChart.destroy();
+                    currentChart = null;
+                }
+                const chartContainer = document.querySelector('.chart-container');
+                chartContainer.innerHTML =
+                    '<div class="error">No data available for the selected filters. Please choose different options.</div>' +
+                    '<canvas id="main-chart" class="chart-canvas"></canvas>';
+                return;
+            }
+
+            // Restore canvas if it was replaced by error message
+            const chartContainer = document.querySelector('.chart-container');
+            if (!document.getElementById('main-chart')) {
+                chartContainer.innerHTML = '<canvas id="main-chart" class="chart-canvas"></canvas>';
+            }
+
             // Prepare chart data
             const ctx = document.getElementById('main-chart');
 
@@ -492,47 +533,53 @@
             if (datasetName === 'stocks') {
                 const groupedByTicker = {};
                 data.forEach(row => {
-                    if (!groupedByTicker[row.ticker]) {
-                        groupedByTicker[row.ticker] = [];
+                    if (row.ticker) {
+                        if (!groupedByTicker[row.ticker]) {
+                            groupedByTicker[row.ticker] = [];
+                        }
+                        groupedByTicker[row.ticker].push(row);
                     }
-                    groupedByTicker[row.ticker].push(row);
                 });
 
                 const datasets = Object.keys(groupedByTicker).map((ticker, idx) => ({
                     label: ticker,
                     data: chartType === 'scatter'
-                        ? groupedByTicker[ticker].map(row => ({ x: row.volume / 1e6, y: row.close }))
-                        : groupedByTicker[ticker].map(row => row.close),
+                        ? groupedByTicker[ticker].map(row => ({ x: (row.volume || 0) / 1e6, y: row.close || 0 }))
+                        : groupedByTicker[ticker].map(row => row.close || 0),
                     borderColor: colors[idx % colors.length],
                     backgroundColor: colors[idx % colors.length] + '40',
                     tension: 0.1
                 }));
 
+                const firstKey = Object.keys(groupedByTicker)[0];
                 return {
-                    labels: chartType !== 'scatter' ? groupedByTicker[Object.keys(groupedByTicker)[0]].map(row => row.date) : undefined,
+                    labels: chartType !== 'scatter' && firstKey ? groupedByTicker[firstKey].map(row => row.date || '') : undefined,
                     datasets: datasets
                 };
             } else if (datasetName === 'crypto') {
                 const groupedByCoin = {};
                 data.forEach(row => {
-                    if (!groupedByCoin[row.coin]) {
-                        groupedByCoin[row.coin] = [];
+                    if (row.coin) {
+                        if (!groupedByCoin[row.coin]) {
+                            groupedByCoin[row.coin] = [];
+                        }
+                        groupedByCoin[row.coin].push(row);
                     }
-                    groupedByCoin[row.coin].push(row);
                 });
 
                 const datasets = Object.keys(groupedByCoin).map((coin, idx) => ({
                     label: coin,
                     data: chartType === 'scatter'
-                        ? groupedByCoin[coin].map(row => ({ x: row.volume || 0, y: row.price }))
-                        : groupedByCoin[coin].map(row => row.price),
+                        ? groupedByCoin[coin].map(row => ({ x: row.volume || 0, y: row.price || 0 }))
+                        : groupedByCoin[coin].map(row => row.price || 0),
                     borderColor: colors[idx % colors.length],
                     backgroundColor: colors[idx % colors.length] + '40',
                     tension: 0.1
                 }));
 
+                const firstKey = Object.keys(groupedByCoin)[0];
                 return {
-                    labels: chartType !== 'scatter' ? groupedByCoin[Object.keys(groupedByCoin)[0]].map(row => row.date) : undefined,
+                    labels: chartType !== 'scatter' && firstKey ? groupedByCoin[firstKey].map(row => row.date || '') : undefined,
                     datasets: datasets
                 };
             } else if (datasetName === 'crypto-risk') {
@@ -541,8 +588,8 @@
                     datasets: [{
                         label: chartType === 'scatter' ? 'Risk vs Return' : 'Total Return (%)',
                         data: chartType === 'scatter'
-                            ? data.map(row => ({ x: row.volatility, y: row.total_return }))
-                            : data.map(row => row.total_return),
+                            ? data.map(row => ({ x: row.avg_volatility, y: row.annualized_return }))
+                            : data.map(row => row.annualized_return),
                         backgroundColor: colors,
                         borderColor: colors,
                         borderWidth: 2
@@ -551,51 +598,65 @@
             } else if (datasetName === 'sentiment') {
                 const groupedByCoin = {};
                 data.forEach(row => {
-                    if (!groupedByCoin[row.coin]) {
-                        groupedByCoin[row.coin] = [];
+                    if (row.coin) {
+                        if (!groupedByCoin[row.coin]) {
+                            groupedByCoin[row.coin] = [];
+                        }
+                        groupedByCoin[row.coin].push(row);
                     }
-                    groupedByCoin[row.coin].push(row);
                 });
 
                 const datasets = Object.keys(groupedByCoin).map((coin, idx) => ({
                     label: coin,
-                    data: groupedByCoin[coin].map(row => row.sentiment_score),
+                    data: groupedByCoin[coin].map(row => row.sentiment_score || 0),
                     borderColor: colors[idx % colors.length],
                     backgroundColor: colors[idx % colors.length] + '40',
                     tension: 0.1
                 }));
 
+                const firstKey = Object.keys(groupedByCoin)[0];
                 return {
-                    labels: groupedByCoin[Object.keys(groupedByCoin)[0]].map(row => row.date),
+                    labels: firstKey ? groupedByCoin[firstKey].map(row => row.date || '') : [],
                     datasets: datasets
                 };
             } else if (datasetName === 'defi') {
                 const groupedByProtocol = {};
                 data.forEach(row => {
-                    if (!groupedByProtocol[row.protocol]) {
-                        groupedByProtocol[row.protocol] = [];
+                    if (row.protocol) {
+                        if (!groupedByProtocol[row.protocol]) {
+                            groupedByProtocol[row.protocol] = [];
+                        }
+                        groupedByProtocol[row.protocol].push(row);
                     }
-                    groupedByProtocol[row.protocol].push(row);
                 });
 
                 const datasets = Object.keys(groupedByProtocol).map((protocol, idx) => ({
                     label: protocol,
-                    data: groupedByProtocol[protocol].map(row => row.tvl_millions),
+                    data: groupedByProtocol[protocol].map(row => row.tvl_millions || 0),
                     borderColor: colors[idx % colors.length],
                     backgroundColor: colors[idx % colors.length] + '40',
                     tension: 0.1
                 }));
 
+                const firstKey = Object.keys(groupedByProtocol)[0];
                 return {
-                    labels: groupedByProtocol[Object.keys(groupedByProtocol)[0]].map(row => row.date),
+                    labels: firstKey ? groupedByProtocol[firstKey].map(row => row.date || '') : [],
                     datasets: datasets
                 };
             }
         }
 
         function getXAxisLabel(datasetName) {
-            if (datasetName === 'crypto-risk') return 'Volatility (%)';
-            if (datasetName === 'stocks' || datasetName === 'crypto') return 'Volume (M)';
+            const chartType = document.getElementById('chart-type').value;
+
+            if (chartType === 'scatter') {
+                if (datasetName === 'crypto-risk') return 'Volatility (%)';
+                if (datasetName === 'stocks') return 'Volume (M)';
+                if (datasetName === 'crypto') return 'Volume';
+                return 'X-Axis';
+            }
+
+            if (datasetName === 'crypto-risk') return 'Cryptocurrency';
             return 'Date';
         }
 

@@ -5,8 +5,6 @@ Week 2 - Day 1-3: Interactive visualizations
 
 import pandas as pd
 import plotly.graph_objects as go
-import plotly.express as px
-from plotly.subplots import make_subplots
 
 # ==============================================================================
 # 1. STOCK MARKET INTERACTIVE VISUALIZATION

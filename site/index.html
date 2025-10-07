@@ -114,7 +114,8 @@
 
             <!-- Search and Filter Bar -->
             <div class="filter-container">
-                <input type="text" id="project-search" placeholder="🔍 Search projects..." class="search-input">
+                <label for="project-search" class="visually-hidden">Search projects</label>
+                <input type="text" id="project-search" placeholder="🔍 Search projects..." class="search-input" aria-label="Search projects">
                 <div class="filter-tags">
                     <button class="filter-tag active" data-filter="all">All</button>
                     <button class="filter-tag" data-filter="stocks">Stocks</button>
@@ -510,13 +511,16 @@ print(df_tvl.groupby('protocol')['growth_30d'].last())</code></pre>
         <div class="contact-form-container">
             <form id="contact-form" class="contact-form">
                 <div class="form-group">
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <label for="name" class="visually-hidden">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" aria-label="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <label for="email" class="visually-hidden">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" aria-label="Your Email" required>
                 </div>
                 <div class="form-group">
-                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <label for="message" class="visually-hidden">Your Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Your Message" aria-label="Your Message" required></textarea>
                 </div>
                 <button type="submit" class="btn">
                     📧 Send Message
@@ -619,7 +623,7 @@ print(df_tvl.groupby('protocol')['growth_30d'].last())</code></pre>
 
             // Update progress bar width
             document.getElementById('scroll-progress').style.width = scrolled + '%';
-        });
+        }, { passive: true });
 
         // ============================================================================
         // SCROLL REVEAL ANIMATIONS
@@ -650,7 +654,7 @@ print(df_tvl.groupby('protocol')['growth_30d'].last())</code></pre>
         };
 
         // Run animation check on scroll and on initial page load
-        window.addEventListener('scroll', revealElements);
+        window.addEventListener('scroll', revealElements, { passive: true });
         window.addEventListener('load', revealElements);
 
         // ============================================================================
@@ -762,7 +766,7 @@ print(df_tvl.groupby('protocol')['growth_30d'].last())</code></pre>
             } else {
                 backToTopButton.classList.remove('visible');
             }
-        });
+        }, { passive: true });
 
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
@@ -836,10 +840,10 @@ print(df_tvl.groupby('protocol')['growth_30d'].last())</code></pre>
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            // Build mailto link with form data
+            // Build mailto link with form data (properly encode all values)
             const subject = `Portfolio Contact from ${name}`;
-            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
-            const mailtoLink = `mailto:anthonygalindo922@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+            const body = `Name: ${name}\n\nEmail: ${email}\n\nMessage:\n${message}`;
+            const mailtoLink = `mailto:anthonygalindo922@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
             // Open user's email client with pre-filled message
             window.location.href = mailtoLink;
